@@ -1,0 +1,62 @@
+$off-white: #f5f1e0;
+
+#carousel {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.item {
+  width: 100% !important;
+  height: 100% !important;
+
+  .post-preview-wrap {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    h1,h5 { color: $off-white }
+  }
+}
+
+.carousel-control.left, .carousel-control.right {
+  background-image: none
+}
+.carousel-inner {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#bg1 {
+  background: url(http://www.earthtimes.org/newsimage/arctic-sea-ice-loss-lets-pacific-sea-life-atlantic_266.jpg) !important;
+  background-repeat: no-repeat !important;
+  background-origin: center !important;
+  background-position: center !important;
+  background-size: cover !important;
+}
+
+#bg2 {
+  background: url(http://kingofwallpapers.com/jungle/jungle-005.jpg) !important;
+  background-repeat: no-repeat !important;
+  background-origin: center !important;
+  background-position: center !important;
+  background-size: cover !important;
+}
+
+#bg3 {
+  background: url(http://news.nationalgeographic.com/content/dam/news/photos/000/786/78625.ngsversion.1422285259310.jpg) !important;
+  background-repeat: no-repeat !important;
+  background-origin: center !important;
+  background-position: center !important;
+  background-size: cover !important;
+}
+
+#bg4 {
+  background: url(http://kingofwallpapers.com/desert/desert-003.jpg) !important;
+  background-repeat: no-repeat !important;
+  background-origin: center !important;
+  background-position: center !important;
+  background-size: cover !important;
+}

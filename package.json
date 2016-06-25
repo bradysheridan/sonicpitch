@@ -1,0 +1,20 @@
+{
+  "name": "pnkblnkt",
+  "version": "1.0.0",
+  "description": "____",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "app.js"
+  },
+  "author": "bradysheridan.com",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.4.2",
+    "express": "^4.14.0",
+    "node-gallery": "^1.1.0",
+    "path": "^0.12.7",
+    "request": "^2.72.0",
+    "wordpress-rest-api": "^0.7.0"
+  }
+}

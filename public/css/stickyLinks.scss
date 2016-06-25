@@ -1,0 +1,34 @@
+$off-white: #f5f1e0;
+
+// Social media links
+.social-wrap {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  img {
+    display: inline-block;
+    margin: 0px 10px 0px 10px;
+    width: 15px;
+  }
+
+  @media screen and ( max-width: 768px ) {
+    right: 0px;
+    left: 0px;
+    text-align: center;
+  }
+}
+
+.bottom-left-wrap {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  p {
+    font-size: 1.2rem;
+    margin: 0px;
+    color: $off-white;
+  }
+
+  @media screen and ( max-width: 768px ) {
+    display: none;
+  }
+}
