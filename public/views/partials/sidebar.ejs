@@ -59,11 +59,15 @@
 
     <!-- Determine main page contents -->
     <% if (showLandingPage) { %>
-      <% include landing_page %>
+      <% include content/landing_page_content %>
     <% } else if (showNowPage) { %>
-      <% include now_content %>
+      <% include content/now_content %>
     <% } else if (showBlogPage) { %>
-      <% include blog_content %>
+      <% include content/blog_content %>
+    <% } else if (showPlacesPage) { %>
+      <% include content/places_content %>
+    <% } else if (showContactPage) { %>
+      <% include content/contact_content %>
     <% } %>
   </div>
   <!-- /#page-content-wrapper -->
