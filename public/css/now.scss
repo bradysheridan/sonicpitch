@@ -1,0 +1,10 @@
+.blog-post-container {
+  padding: 0px 20% 80px 20%;
+  @media screen and ( max-width: 768px ) {
+    padding: 0px 40px 80px 40px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

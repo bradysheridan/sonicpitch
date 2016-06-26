@@ -1,19 +1,20 @@
 // Dependencies
-var express = require('express');
-var path = require('path');
-var app = express();
-var request = require("request");
+var express = require('express'),
+    path = require('path'),
+    app = express(),
+    http = require('http')
+    request = require('request');
 
-//
-var wpURL = "http://sonicpitch.com/wp-json/wp/v2/posts";
-request({
-  url: wpURL,
-  json: true
-}, function (error, response, body) {
-  if (!error && response.statusCode === 200) {
-    console.log(body); // Print the json response
-  }
+var port = process.env.PORT || 8080;
+var APPNAME = require('./package.json').name;
+
+var server = http.createServer(app).listen(port, function () {
+  var address = this.address();
+  console.log('%s worker %d running on http://%s:%d',
+    APPNAME, process.pid, address.address, address.port);
 });
+
+var io = require('socket.io')(server);
 
 // Look in '/public' when serving files
 app.use(express.static('public'));
@@ -29,7 +30,7 @@ app.get('/', function(req, res) {
 
 // WHAT I'M DOING NOW
 app.get('/now', function(req, res) {
-  res.render('pages/index');
+  res.render('pages/now');
 });
 
 // BLOG
@@ -52,7 +53,67 @@ app.get('/contact', function(req, res) {
   res.render('pages/contact');
 });
 
-// Set port
-var port = 8000;
-app.listen(port);
-console.log("SONICPITCH is listening on port " + port);
+// Fetch blog data from Wordpress
+var postURL = "http://sonicpitch.com/wp-json/wp/v2/posts";
+var postData;
+
+// Gets JSON data and passes to a callback function to save in local variable
+function getBlogData(url, callback) {
+  request({
+    url: url,
+    json: true
+  }, function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      callback(body);
+    }
+  });
+}
+
+// Do the work, store JSON locally in blogData
+getBlogData(postURL, function (body) {
+  postData = body;
+});
+
+
+// Fetch categories data from Wordpress
+var catURL = "http://sonicpitch.com/wp-json/wp/v2/categories";
+var catData;
+
+function getCatData(url, callback) {
+  request({
+    url: url,
+    json: true
+  }, function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      callback(body);
+    }
+  });
+};
+
+getCatData(catURL, function(body) {
+  catData = body;
+});
+
+
+// Socket.io fetches and delivers the Wordpress JSON for blog data
+io.on("connection", function(socket) {
+  // A client connected
+  console.log("");
+  console.log("Socket.io");
+  console.log("=-=-=-=-=");
+  console.log("A connection was made.");
+  console.log("");
+
+  // Send posts to the client
+  socket.emit("posts", postData);
+  socket.emit("cats", catData);
+
+  // A client disconnected
+  socket.on("disconnect", function() {
+    console.log("");
+    console.log("Socket.io");
+    console.log("=-=-=-=-=");
+    console.log("The user disconnected.");
+    console.log("");
+  });
+});

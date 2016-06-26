@@ -1,0 +1,150 @@
+$off-white: #ffffff;
+$off-black: #0c011f;
+
+@mixin buttonColors() {
+  transition: 200ms;
+  -webkit-transition: 200ms;
+  background-color: transparent;
+  color: $off-black;
+
+  &:hover {
+    transition: 200ms;
+    -webkit-transition: 200ms;
+    background-color: $off-black;
+    color: $off-white;
+  }
+}
+
+// Container styles
+.blog-header {
+  h2,p {
+    color: $off-black;
+    text-align: center;
+  }
+  &:after {
+    content: "";
+    position: relative;
+    width: 50%;
+    margin-left: 25%;
+    height: 1px;
+    background-color: $off-black;
+  }
+
+  @media screen and ( max-width: 768px ) {
+    margin-top: 85px;
+    h2 { font-size: 4rem }
+    p { font-size: 1.2rem }
+  }
+}
+
+// Blog category filter
+.filter-wrap {
+  text-align: center;
+  padding: 10px 0px 40px 0px;
+
+  button {
+    display: inline-block;
+    margin: 0px 20px 0px 20px;
+    padding: 0px 15px 0px 15px;
+    width: auto;
+    height: 60px;
+    border: none;
+    border: 3px solid $off-black;
+    font-size: 1.4rem;
+    @include buttonColors();
+
+    @media screen and ( max-width: 768px ) {
+      margin: 2.5px 5px 2.5px 5px;
+    }
+  }
+}
+
+.post-wrap {
+  // Sizing
+  width: 100%;
+
+  h1,h2,h3,h4,h5,h6,p {
+    color: $off-black;
+  }
+
+  // Title styles
+  .title-wrap {
+    width: 65%;
+    margin-left: 17.5%;
+
+    .background {
+      // Sizing
+      width: 100%;
+      height: auto
+    }
+
+    .date {
+      text-align: center;
+      color: #3f3c45;
+      padding-top: 17.5px;
+    }
+    .title {
+      text-align: center;
+      color: $off-black;
+      background-color: #fff;
+      padding: 0px 40px 0px 40px;
+    }
+
+    // Styles for a smaller screen
+    @media screen and ( max-width: 768px ) {
+      width: 90%;
+      margin-left: 5%;
+
+      .title {
+        font-size: 1.8rem;
+      }
+    }
+  }
+  // { END } Title styles
+
+
+  // Body styles
+  .body-wrap {
+    width: 65%;
+    margin-left: 17.5%;
+    padding-top: 30px;
+
+    p {
+      img {
+        text-align: center;
+      }
+      a img {
+        text-align: center;
+        margin: 0 auto;
+      }
+    }
+    img { margin: 0 auto; }
+
+    // Mobile
+    @media screen and ( max-width: 768px ) {
+      width: 90%;
+      margin-left: 5%;
+
+      img {
+        width: 85%;
+        height: auto;
+        margin-left: 7.5%;
+      }
+    }
+  }
+  // { END } Body styles
+
+
+  // Separator
+  &:after {
+    position: relative;
+    content: "";
+    display: block;
+    width: 50%;
+    margin-left: 25%;
+    height: 1px;
+    background-color: $off-black;
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+}

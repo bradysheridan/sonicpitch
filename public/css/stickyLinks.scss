@@ -1,8 +1,8 @@
-$off-white: #f5f1e0;
+$off-white: #ffffff;
 
 // Social media links
 .social-wrap {
-  position: absolute;
+  position: fixed;
   bottom: 50px;
   right: 50px;
   img {
@@ -19,7 +19,7 @@ $off-white: #f5f1e0;
 }
 
 .bottom-left-wrap {
-  position: absolute;
+  position: fixed;
   bottom: 50px;
   left: 50px;
   p {

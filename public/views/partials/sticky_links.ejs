@@ -1,10 +1,32 @@
 <!-- Social media links -->
 <div class="social-wrap">
-  <a href="https://www.facebook.com/Ionamadison/?fref=nf" target="_blank"><img src="../images/facebook.svg" /></a>
-  <a href="https://twitter.com/pdubpresents" target="_blank"><img src="../images/twitter.svg" /></a>
-  <a href="https://www.instagram.com/pdubxo/" target="_blank"><img src="../images/instagram.svg" /></a>
+  <a href="https://www.facebook.com/Ionamadison/?fref=nf" target="_blank">
+    <% if (darkTheme) { %>
+      <img src="../images/facebook-dark.svg" />
+    <% } else { %>
+      <img src="../images/facebook.svg" />
+    <% } %>
+  </a>
+  <a href="https://twitter.com/pdubpresents" target="_blank">
+    <% if (darkTheme) { %>
+      <img src="../images/twitter-dark.svg" />
+    <% } else { %>
+      <img src="../images/twitter.svg" />
+    <% } %>
+  </a>
+  <a href="https://www.instagram.com/pdubxo/" target="_blank">
+    <% if (darkTheme) { %>
+      <img src="../images/instagram-dark.svg" />
+    <% } else { %>
+      <img src="../images/instagram.svg" />
+    <% } %>
+  </a>
 </div>
 
 <div class="bottom-left-wrap">
-  <p><a href="/journal">Journal</a>  /  <a href="/about">About</a>  /  <a href="/contact">Contact</a></p>
+  <% if (darkTheme) { %>
+    <p style="color:#0c011f"><a href="/journal">Journal</a>  /  <a href="/about">About</a>  /  <a href="/contact">Contact</a></p>
+  <% } else { %>
+    <p><a href="/journal">Journal</a>  /  <a href="/about">About</a>  /  <a href="/contact">Contact</a></p>
+  <% } %>
 </div>
