@@ -6,15 +6,16 @@
   <% include ../partials/head %>
 
   <!-- Get Wordpress JSON sent by app.js -->
-  <% include ../partials/scripts/blog %>
+  <% include ../partials/scripts/journal %>
 
 </head>
 <body>
 
-  <% var showLandingPage = false, showNowPage = false, showBlogPage = true, showPlacesPage = false, showAboutPage = false, showContactPage = false  %>
+  <% var showLandingPage = false, showNowPage = false, showJournalPage = true, showPlacesPage = false, showAboutPage = false, showContactPage = false  %>
   <% var darkTheme = true %>
   <% include ../partials/sidebar %>
   <% include ../partials/sticky_links %>
 
+  <script id="dsq-count-scr" src="//sonicpitch.disqus.com/count.js" async></script>
 </body>
 </html>

@@ -1,0 +1,43 @@
+.about-wrap {
+  width: 100% !important;
+  height: 100% !important;
+
+  overflow-y: scroll;
+  padding: 85px 0px 85px 0px;
+
+  background: url(http://sonicpitch.com/wp-content/uploads/2014/05/westcoast-pamela-2.jpg);
+  background-origin: center;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+
+  .about-inner {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+
+    h3 {
+      font-size: 3.2rem;
+    }
+    h4.quote {
+      font-size: 1.8rem;
+      text-align: center;
+      margin: 30px 0px 30px 0px;
+      padding: 0px 120px 0px 120px;
+
+      @media screen and ( max-width: 1000px ) {
+        padding: 0px;
+      }
+    }
+    h4,h5 {
+      font-size: 2rem;
+      text-align: left;
+      margin: 25px 0px 25px 0px;
+    }
+
+    // Mobile
+    @media screen and ( max-width: 768px ) {
+      width: 90%;
+    }
+  }
+}

@@ -42,9 +42,32 @@ $(function() {
 
   // Return a ready to render blog post
   function generatePost(thumbnail, title, date, body, slug, cats) {
-    return $("<div class='post-wrap' cats='" + cats + "' id='" + slug + "'><div class='title-wrap'><img class='background' src='" + thumbnail + "' alt='The image failed to load, please refresh your browser.'/><p class='date'>" + date + "</p><h4 class='title'>" + title + "</h4></div><div class='body-wrap'>" + body + "</div></div>");
+    return $("<div class='post-wrap' cats='" + cats + "' id='" + slug + "'><div class='title-wrap'><img class='background' src='" + thumbnail + "' alt='The image failed to load, please refresh your browser.'/><p class='date'>" + date + "</p><h4 class='title'>" + title + "</h4></div><div class='body-wrap'>" + body + "</div></div>" + generateDisqussion(slug));
   };
 
+  function generateDisqussion(slug) {
+    // Generate thread div
+    var thread = document.createElement("div");
+    thread.id = "disqus_thread";
+
+    // Generate script
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "../js/disqussion.js";
+    s.identifier = slug;
+    s.url = window.location.href + slug;
+
+    // Generate noscript
+    var ns = document.createElement("noscript");
+    s.innerHTML = "Please enable JavaScript to view the <a href='https://disqus.com/?ref_noscript' rel='nofollow'>comments powered by Disqus.</a>";
+
+    var wrap = document.createElement("div");
+    wrap.appendChild(thread);
+    wrap.appendChild(s);
+    wrap.appendChild(ns);
+
+    return wrap;
+  };
 
   // Handle event listeners for filter buttons
   $(".filter-wrap").on("click", "button", function() {
@@ -108,10 +131,11 @@ $(function() {
         // Render the post
         function storeThumbnail(url) {
           $("#blog-wrap").append(generatePost(url, title, date, body, slug, cats));
+          $("#blog-wrap").append(generateDisqussion(slug));
         };
       }, delay);
     };
   };
 
-  
+
 });

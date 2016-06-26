@@ -34,8 +34,8 @@ app.get('/now', function(req, res) {
 });
 
 // BLOG
-app.get('/blog', function(req, res) {
-  res.render('pages/blog');
+app.get('/journal', function(req, res) {
+  res.render('pages/journal');
 });
 
 // PLACES

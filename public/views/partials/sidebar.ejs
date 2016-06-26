@@ -11,7 +11,7 @@
       <a href="/now">WHAT I'M DOING NOW</a>
       </li>
       <li>
-        <a href="/blog">BLOG</a>
+        <a href="/journal">JOURNAL</a>
       </li>
       <li>
         <a href="/places">FAVORITE PLACES</a>
@@ -62,12 +62,14 @@
       <% include content/landing_page_content %>
     <% } else if (showNowPage) { %>
       <% include content/now_content %>
-    <% } else if (showBlogPage) { %>
+    <% } else if (showJournalPage) { %>
       <% include content/blog_content %>
     <% } else if (showPlacesPage) { %>
       <% include content/places_content %>
     <% } else if (showContactPage) { %>
       <% include content/contact_content %>
+    <% } else if (showAboutPage) { %>
+      <% include content/about_content %>
     <% } %>
   </div>
   <!-- /#page-content-wrapper -->
