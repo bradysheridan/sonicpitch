@@ -19,6 +19,10 @@ a, a:hover, a:visited, a:focus {
   color: inherit;
 }
 
+button:focus {
+  outline: 0 !important;
+}
+
 a:hover {
   opacity: 0.7;
 }
