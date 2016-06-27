@@ -5,7 +5,7 @@ var express = require('express'),
     http = require('http')
     request = require('request');
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8000;
 var APPNAME = require('./package.json').name;
 
 var server = http.createServer(app).listen(port, function () {
@@ -96,6 +96,7 @@ getCatData(catURL, function(body) {
 
 // Socket.io fetches and delivers the Wordpress JSON for blog data
 io.on("connection", function(socket) {
+  console.log("a connection was ")
   // A client connected
   console.log("");
   console.log("Socket.io");
@@ -116,3 +117,5 @@ io.on("connection", function(socket) {
     console.log("");
   });
 });
+
+module.exports = app;

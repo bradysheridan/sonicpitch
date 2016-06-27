@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 
+  <% var title = "Places - Pamela Wilson" %>
   <% include ../partials/head %>
-  <% include ../partials/scripts/landing_page %>
+  <% include ../partials/scripts/places %>
 
 </head>
 <body>
@@ -12,6 +13,16 @@
   <% var darkTheme = true %>
   <% include ../partials/sidebar %>
   <% include ../partials/sticky_links %>
+
+  <!-- Overwrite some stick link styles on this page only -->
+  <style>
+    @media screen and ( max-width: 768px ) {
+      .social-wrap {
+        text-align: right;
+        padding-right: 15px;
+      }
+    }
+  </style>
 
 </body>
 </html>

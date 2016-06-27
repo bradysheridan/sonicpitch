@@ -1,5 +1,12 @@
 $(function() {
-  var socket = io.connect(location.protocol + "//" + location.hostname + ":8080");
+  if (location.hostname == "localhost") {
+    var socket = io.connect(location.protocol + "//" + location.hostname + ":8000");
+  } else {
+    var socket = io.connect(location.protocol + "//" + location.hostname + ":80");
+  }
+  // var socket = io.connect("54.226.247.57:8081");
+  // var socket = io.connect("https://54.226.247.57:8081");
+
   var currSlug = "";
 
   // Implement this later if necessary
@@ -27,6 +34,8 @@ $(function() {
 
   // Populate filter buttons
   socket.on("cats", function(cats) {
+    console.log("got cats");
+
     cats.forEach(function(cat) {
       var name = cat.name,
           id = cat.id,
@@ -49,6 +58,7 @@ $(function() {
 
   // Populate blog posts
   socket.on("posts", function(posts) {
+    console.log("got posts");
     renderPosts(posts);
   });
 

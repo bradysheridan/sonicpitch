@@ -1,10 +1,42 @@
-<div class="places-wrap">
-  <div class="title-wrap">
-    <h2>My Favorite Places</h2>
-    <p>- From Madison, WI to the Big Apple -</p>
-  </div>
-  <iframe src="https://www.google.com/maps/d/embed?mid=1BIVSc9-PR7Lpl9lKoVovq6Kbszg" width="640" height="480"></iframe>
-  <iframe src="https://www.google.com/maps/d/embed?mid=1y2YtXXhuADTgyL0hDTJhd2Ev19Y" width="640" height="480"></iframe>
-  <iframe src="https://www.google.com/maps/d/embed?mid=1iOUPhAu94OqaIHJblfxF56T-87U" width="640" height="480"></iframe>
-  <iframe src="https://www.google.com/maps/d/embed?mid=131Dol3Y42XNG-VHbm7rp0fZX_2c" width="640" height="480"></iframe>
+<script>
+  var nyc = "https://www.google.com/maps/d/u/0/embed?mid=1iOUPhAu94OqaIHJblfxF56T-87U",
+      la = "https://www.google.com/maps/d/u/0/embed?mid=1y2YtXXhuADTgyL0hDTJhd2Ev19Y",
+      madison = "https://www.google.com/maps/d/u/0/embed?mid=1BIVSc9-PR7Lpl9lKoVovq6Kbszg",
+      lv = "https://www.google.com/maps/d/embed?mid=131Dol3Y42XNG-VHbm7rp0fZX_2c";
+
+  function changeLocations(dest) {
+    switch (dest) {
+      case "nyc":
+        $("iframe").attr('src', nyc);
+        $("button").removeClass('active');
+        $("#" + dest).addClass('active');
+      break;
+      case "la":
+        $("iframe").attr('src', la);
+        $("button").removeClass('active');
+        $("#" + dest).addClass('active');
+      break;
+      case "madison":
+        $("iframe").attr('src', madison);
+        $("button").removeClass('active');
+        $("#" + dest).addClass('active');
+      break
+      case "lv":
+        $("iframe").attr('src', lv);
+        $("button").removeClass('active');
+        $("#" + dest).addClass('active');
+      break
+    }
+  };
+</script>
+
+<div class="menu-wrap">
+  <button id="nyc" onClick="changeLocations('nyc')">NYC</button>
+  <button id="lv" onClick="changeLocations('lv')">Las Vegas</button>
+  <button id="la" onClick="changeLocations('la')">LA</button>
+  <button id="madison" class="active" onClick="changeLocations('madison')">Madison</button>
+</div>
+
+<div class="frame-wrap">
+  <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1BIVSc9-PR7Lpl9lKoVovq6Kbszg" width="640" height="480"></iframe>
 </div>

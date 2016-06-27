@@ -1,7 +1,15 @@
 $(function() {
-  var socket = io.connect(location.protocol + "//" + location.hostname + ":8080");
+  if (location.hostname == "localhost") {
+    var socket = io.connect(location.protocol + "//" + location.hostname + ":8000");
+  } else {
+    var socket = io.connect(location.protocol + "//" + location.hostname + ":80");
+  }
+  // var socket = io.connect("54.226.247.57:8081");
+  // var socket = io.connect("https://54.226.247.57:8081");
 
   socket.on("posts", function(posts) {
+    console.log("got posts");
+
     for (var i = 0; i < 4; i++) {
       populateSlide(posts[i], 100 * i, i);
     };
@@ -18,6 +26,7 @@ $(function() {
         });
 
         function finalize(thumbnail) {
+          $("button.btn-read-more").show();
           $("#bg" + i).css({
             "background-image": "url(" + thumbnail + ")",
             "background-repeat": "no-repeat !important",
