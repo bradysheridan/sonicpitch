@@ -1,16 +1,19 @@
-@import 'https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans';
+@import 'https://fonts.googleapis.com/css?family=Rajdhani:400,700|Work+Sans:400,700';
 
-$font-header: 'Open Sans', sans-serif;
+$font-header: 'Rajdhani', sans-serif;
 $font-body: 'Lora', sans-serif;
 
 html, body {
   width: 100%;
   height: 100%;
   font-size: 62.5%;
+  font-weight: 400;
 
   // Disable overflow scrolling and visibility
   margin: 0 auto;
   overflow-x: hidden;
+  overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
 }
 
 // Remove default link styles
@@ -41,3 +44,14 @@ p { font-size: 1.6rem }
 h1,h2,h3,h4,h5,h6 { font-family: $font-header }
 p { font-family: $font-body }
 button { font-family: $font-header }
+
+.page-title {
+  font-family: 'Rajdhani';
+}
+.bold {
+  font-weight: 700;
+}
+
+em {
+  font-size: inherit !important;
+}

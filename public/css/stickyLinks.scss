@@ -5,6 +5,7 @@ $off-white: #ffffff;
   position: fixed;
   bottom: 50px;
   right: 50px;
+  z-index: 2;
   img {
     display: inline-block;
     margin: 0px 10px 0px 10px;
@@ -14,6 +15,7 @@ $off-white: #ffffff;
   @media screen and ( max-width: 768px ) {
     right: 0px;
     left: 0px;
+    bottom: 17.5px;
     text-align: center;
   }
 }
@@ -22,6 +24,8 @@ $off-white: #ffffff;
   position: fixed;
   bottom: 50px;
   left: 50px;
+  z-index: 2;
+
   p {
     font-size: 1.2rem;
     margin: 0px;
