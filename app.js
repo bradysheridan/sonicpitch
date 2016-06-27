@@ -74,9 +74,6 @@ getBlogData(postURL, function (body) {
   postData = body;
 });
 
-var testme = require('./example2.json');
-console.log(testme.length);
-
 // Fetch categories data from Wordpress
 var catURL = "http://sonicpitch.com/wp-json/wp/v2/categories";
 var catData;

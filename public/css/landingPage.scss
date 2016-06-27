@@ -12,6 +12,9 @@ $off-white: #ffffff;
   width: 100% !important;
   height: 100% !important;
   background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-origin: center;
 
   .post-preview-wrap {
     width: 100% !important;
@@ -31,6 +34,13 @@ $off-white: #ffffff;
       &:hover {
         text-shadow: 1px 1px 2px $off-white;
       }
+    }
+  }
+
+  @media screen and ( max-width: 768px ) {
+    h1 {
+      font-size: 3.4rem;
+      padding: 0px 40px 0px 40px;
     }
   }
 }

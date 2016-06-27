@@ -1,5 +1,5 @@
 $(function() {
-  var socket = io.connect('http://localhost:8080');
+  var socket = io.connect(location.protocol + "//" + location.hostname + ":8080");
   var currSlug = "";
 
   // Implement this later if necessary
@@ -7,6 +7,12 @@ $(function() {
 
   // Increment after loading more posts
   var currPage = 1;
+
+  // Show loading at first
+  $("button.load-more").html("Loading...");
+  setTimeout(function() {
+    $("button.load-more").html("MORE");
+  }, 3000);
 
   // For date formatting
   var months = [

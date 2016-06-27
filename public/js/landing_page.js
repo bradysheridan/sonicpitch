@@ -1,5 +1,5 @@
 $(function() {
-  var socket = io.connect('http://localhost:8080');
+  var socket = io.connect(location.protocol + "//" + location.hostname + ":8080");
 
   socket.on("posts", function(posts) {
     for (var i = 0; i < 4; i++) {

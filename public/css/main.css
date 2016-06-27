@@ -344,7 +344,10 @@ html {
 .item {
   width: 100% !important;
   height: 100% !important;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-origin: center; }
   .item .post-preview-wrap {
     width: 100% !important;
     height: 100% !important;
@@ -359,6 +362,10 @@ html {
       text-shadow: 1px 1px 2px #0c011f; }
       .item .post-preview-wrap button:hover {
         text-shadow: 1px 1px 2px #ffffff; }
+  @media screen and (max-width: 768px) {
+    .item h1 {
+      font-size: 3.4rem;
+      padding: 0px 40px 0px 40px; } }
 
 .carousel-control.left, .carousel-control.right {
   background-image: none; }
@@ -484,7 +491,7 @@ html {
       text-align: center;
       margin: 0 auto; }
     .post-wrap .body-wrap img {
-      margin: 0 auto; }
+      text-align: center; }
     @media screen and (max-width: 768px) {
       .post-wrap .body-wrap {
         width: 90%;
