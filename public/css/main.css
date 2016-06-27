@@ -232,6 +232,9 @@ html {
 
 #wrapper.toggled {
   padding-left: 300px; }
+  @media screen and (max-width: 768px) {
+    #wrapper.toggled {
+      padding-left: 225px; } }
 
 #sidebar-wrapper {
   z-index: 1000;
@@ -246,12 +249,19 @@ html {
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease; }
+  @media screen and (max-width: 768px) {
+    #sidebar-wrapper {
+      left: 225px;
+      margin-left: -225px; } }
 
 #sidebar-wrapper::-webkit-scrollbar {
   display: none; }
 
 #wrapper.toggled #sidebar-wrapper {
   width: 300px; }
+  @media screen and (max-width: 768px) {
+    #wrapper.toggled #sidebar-wrapper {
+      width: 225px; } }
 
 #page-content-wrapper {
   width: 100%;
@@ -263,6 +273,11 @@ html {
 #wrapper.toggled #page-content-wrapper {
   position: absolute;
   margin-right: -300px; }
+  @media screen and (max-width: 768px) {
+    #wrapper.toggled #page-content-wrapper {
+      margin-right: -225px; } }
+  #wrapper.toggled #page-content-wrapper img {
+    display: none; }
 
 /*-------------------------------*/
 /*     Sidebar nav styles        */
@@ -274,6 +289,9 @@ html {
   margin: 0;
   padding: 0;
   list-style: none; }
+  @media screen and (max-width: 768px) {
+    .sidebar-nav {
+      width: 225px; } }
 
 .sidebar-nav li {
   position: relative;
@@ -330,7 +348,7 @@ html {
     display: inline;
     margin-left: 45px; }
   .hamburger img {
-    height: 30px;
+    height: 22.5px;
     margin-left: 50px; }
     @media screen and (max-width: 768px) {
       .hamburger img {
@@ -565,23 +583,25 @@ html {
   .loading h6 {
     color: #0c011f; }
 
-.blog-header h2, .blog-header p {
-  color: #0c011f;
-  text-align: center; }
-.blog-header:after {
-  content: "";
-  position: relative;
-  width: 50%;
-  margin-left: 25%;
-  height: 1px;
-  background-color: #0c011f; }
-@media screen and (max-width: 768px) {
-  .blog-header {
-    margin-top: 85px; }
-    .blog-header h2 {
-      font-size: 4rem; }
-    .blog-header p {
-      font-size: 1.2rem; } }
+.blog-header {
+  margin-top: 60px; }
+  .blog-header h2, .blog-header p {
+    color: #0c011f;
+    text-align: center; }
+  .blog-header:after {
+    content: "";
+    position: relative;
+    width: 50%;
+    margin-left: 25%;
+    height: 1px;
+    background-color: #0c011f; }
+  @media screen and (max-width: 768px) {
+    .blog-header {
+      margin-top: 85px; }
+      .blog-header h2 {
+        font-size: 4rem; }
+      .blog-header p {
+        font-size: 1.2rem; } }
 
 .filter-wrap {
   text-align: center;
@@ -619,7 +639,8 @@ html {
     font-size: 2.2rem; }
   .post-wrap .title-wrap {
     width: 65%;
-    margin-left: 17.5%; }
+    margin-left: 17.5%;
+    margin-top: 0px; }
     .post-wrap .title-wrap .background {
       width: 100%;
       height: auto; }

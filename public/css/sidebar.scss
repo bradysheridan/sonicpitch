@@ -1,5 +1,6 @@
 $off-white: #ffffff;
 $off-black: #0c011f;
+$left-small: 225px;
 
 body {
     position: relative;
@@ -25,6 +26,10 @@ html { height: 100%;}
 
 #wrapper.toggled {
   padding-left: 300px;
+  @media screen and ( max-width: 768px ) {
+    padding-left: $left-small;
+  }
+
 }
 
 #sidebar-wrapper {
@@ -40,6 +45,11 @@ html { height: 100%;}
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+
+    @media screen and ( max-width: 768px ) {
+      left: $left-small;
+      margin-left: -1 * $left-small;
+    }
 }
 
 #sidebar-wrapper::-webkit-scrollbar {
@@ -48,6 +58,9 @@ html { height: 100%;}
 
 #wrapper.toggled #sidebar-wrapper {
     width: 300px;
+    @media screen and ( max-width: 768px ) {
+      width: $left-small;
+    }
 }
 
 #page-content-wrapper {
@@ -60,6 +73,10 @@ html { height: 100%;}
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -300px;
+    @media screen and ( max-width: 768px ) {
+      margin-right: -1 * $left-small;
+    }
+    img { display: none }
 }
 
 /*-------------------------------*/
@@ -73,6 +90,9 @@ html { height: 100%;}
     margin: 0;
     padding: 0;
     list-style: none;
+    @media screen and ( max-width: 768px ) {
+      width: $left-small;
+    }
 }
 
 .sidebar-nav li {
@@ -199,7 +219,7 @@ html { height: 100%;}
   }
 
   img {
-    height: 30px;
+    height: 22.5px;
     margin-left: 50px;
     @media screen and ( max-width: 768px ) { height: 20px; }
   }
