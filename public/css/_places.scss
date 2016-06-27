@@ -1,28 +1,31 @@
-// .places-wrap {
-//
-//   .title-wrap {
-//     h2,p {
-//       color: $off-black;
-//       text-align: center;
-//     }
-//     @media screen and ( max-width: 768px ) {
-//       margin-top: 85px;
-//       h2 { font-size: 4rem }
-//       p { font-size: 1.2rem }
-//     }
-//   }
-//
-//   iframe {
-//     border: none;
-//     width: 65%;
-//     margin: 30px 0px 30px 17.5%;
-//
-//     @media screen and ( max-width: 768px ) {
-//       width: 90%;
-//       margin-left: 5%;
-//     }
-//   }
-// }
+
+@mixin buttonColors() {
+  transition: 200ms;
+  -webkit-transition: 200ms;
+  background-color: transparent;
+  color: $off-black;
+
+  &:hover {
+    transition: 200ms;
+    -webkit-transition: 200ms;
+    background-color: $off-black;
+    color: $off-white;
+  }
+}
+
+@mixin buttonColorsInverse() {
+  transition: 200ms;
+  -webkit-transition: 200ms;
+  background-color: transparent;
+  color: $off-white;
+
+  &:hover {
+    transition: 200ms;
+    -webkit-transition: 200ms;
+    background-color: $off-white;
+    color: $off-black;
+  }
+}
 
 .menu-wrap {
   position: absolute;
@@ -31,16 +34,54 @@
   left: 0;
   right: 0;
   height: 85px;
-  background-color: red;
 
   button {
     float: right;
+    height: 50px;
+    width: 100px;
     border: 4px solid $off-black;
     padding: 10px;
-    margin: 0px 10px 0px 10px;
+    margin: 17.5px 10px 0px 10px;
+    background-color: transparent;
+    font-size: 1.6rem;
 
-    &:last-child {
+    @include buttonColors();
+
+    &:first-child {
       margin-right: 50px;
+    }
+
+    &.active {
+      background-color: $off-white;
+      color: $off-black;
+    }
+  }
+
+  @media screen and ( max-width: 768px ) {
+    margin-top: 85px;
+    background-color: $off-black;
+    display: flex;
+    flex-direction: row;
+
+    button {
+      flex: 1;
+      margin: 0px;
+      height: 100%;
+      background-color: $off-black;
+      color: $off-white;
+      border: none;
+      border-top: 4px solid $off-black;
+
+      &:first-child {
+        margin-right: 0px;
+      }
+
+      @include buttonColorsInverse();
+
+      &.active {
+        background-color: $off-white;
+        color: $off-black;
+      }
     }
   }
 }
@@ -59,5 +100,9 @@
     height: 100%;
     border: none;
     padding-top: 85px;
+  }
+
+  @media screen and ( max-width: 768px ) {
+    margin-top: 85px;
   }
 }

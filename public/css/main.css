@@ -735,15 +735,58 @@ html {
   top: 0;
   left: 0;
   right: 0;
-  height: 85px;
-  background-color: red; }
+  height: 85px; }
   .menu-wrap button {
     float: right;
+    height: 50px;
+    width: 100px;
     border: 4px solid #0c011f;
     padding: 10px;
-    margin: 0px 10px 0px 10px; }
-    .menu-wrap button:last-child {
+    margin: 17.5px 10px 0px 10px;
+    background-color: transparent;
+    font-size: 1.6rem;
+    transition: 200ms;
+    -webkit-transition: 200ms;
+    background-color: transparent;
+    color: #0c011f; }
+    .menu-wrap button:hover {
+      transition: 200ms;
+      -webkit-transition: 200ms;
+      background-color: #0c011f;
+      color: #ffffff; }
+    .menu-wrap button:first-child {
       margin-right: 50px; }
+    .menu-wrap button.active {
+      background-color: #ffffff;
+      color: #0c011f; }
+  @media screen and (max-width: 768px) {
+    .menu-wrap {
+      margin-top: 85px;
+      background-color: #0c011f;
+      display: flex;
+      flex-direction: row; }
+      .menu-wrap button {
+        flex: 1;
+        margin: 0px;
+        height: 100%;
+        background-color: #0c011f;
+        color: #ffffff;
+        border: none;
+        border-top: 4px solid #0c011f;
+        transition: 200ms;
+        -webkit-transition: 200ms;
+        background-color: transparent;
+        color: #ffffff; }
+        .menu-wrap button:first-child {
+          margin-right: 0px; }
+        .menu-wrap button:hover {
+          transition: 200ms;
+          -webkit-transition: 200ms;
+          background-color: #ffffff;
+          color: #0c011f; }
+        .menu-wrap button.active {
+          background-color: #ffffff;
+          color: #0c011f; } }
 
 .frame-wrap {
   position: absolute;
@@ -757,6 +800,9 @@ html {
     height: 100%;
     border: none;
     padding-top: 85px; }
+  @media screen and (max-width: 768px) {
+    .frame-wrap {
+      margin-top: 85px; } }
 
 .title-wrap {
   margin-top: 85px; }
