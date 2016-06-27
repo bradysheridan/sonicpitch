@@ -1,11 +1,14 @@
 $(function() {
   var socket = io.connect('http://localhost:8080');
-
+  var currSlug = "";
 
   // Implement this later if necessary
-  $(".loading").hide();
+  $("#disqus_thread").hide();
 
+  // Increment after loading more posts
+  var currPage = 1;
 
+  // For date formatting
   var months = [
     "January", "February", "March",
     "April", "May", "June", "July",
@@ -13,6 +16,8 @@ $(function() {
     "November", "December"
   ];
 
+  // id: 'category_name' associative array for category rendering in posts
+  var assCats = {};
 
   // Populate filter buttons
   socket.on("cats", function(cats) {
@@ -20,6 +25,8 @@ $(function() {
       var name = cat.name,
           id = cat.id,
           url = cat._links['wp:post_type'][0].href;
+
+      assCats[id] = name;
 
       if (name != "Uncategorized") {
         $(".filter-wrap").append(generateFilter(name, id, url));
@@ -42,31 +49,18 @@ $(function() {
 
   // Return a ready to render blog post
   function generatePost(thumbnail, title, date, body, slug, cats) {
-    return $("<div class='post-wrap' cats='" + cats + "' id='" + slug + "'><div class='title-wrap'><img class='background' src='" + thumbnail + "' alt='The image failed to load, please refresh your browser.'/><p class='date'>" + date + "</p><h4 class='title'>" + title + "</h4></div><div class='body-wrap'>" + body + "</div></div>" + generateDisqussion(slug));
-  };
+    // Generate the correct category string
+    var categories = cats.split(',');
+    var catString = "";
+    for (var i = 0; i < categories.length; i++) {
+      if (categories[i] != 0) {
+        catString += assCats[categories[i]] + " - ";
+      }
+    }
+    catString = catString.substring(0, catString.length - 3);
 
-  function generateDisqussion(slug) {
-    // Generate thread div
-    var thread = document.createElement("div");
-    thread.id = "disqus_thread";
-
-    // Generate script
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "../js/disqussion.js";
-    s.identifier = slug;
-    s.url = window.location.href + slug;
-
-    // Generate noscript
-    var ns = document.createElement("noscript");
-    s.innerHTML = "Please enable JavaScript to view the <a href='https://disqus.com/?ref_noscript' rel='nofollow'>comments powered by Disqus.</a>";
-
-    var wrap = document.createElement("div");
-    wrap.appendChild(thread);
-    wrap.appendChild(s);
-    wrap.appendChild(ns);
-
-    return wrap;
+    // Render the post, injecting all params
+    return $("<div class='post-wrap' cats='" + cats + "' id='" + slug + "'><div class='title-wrap'><img class='background' src='" + thumbnail + "' alt='The image failed to load, please refresh your browser.'/><p class='date'>" + date + "</p><p class='cats'>" + catString + "</p><h4 class='title'>" + title + "</h4></div><div class='body-wrap'>" + body + "</div><div class='comment-wrap'><button slug='" + slug + "' class='comment'>COMMENT</button></div></div>");
   };
 
   // Handle event listeners for filter buttons
@@ -131,11 +125,55 @@ $(function() {
         // Render the post
         function storeThumbnail(url) {
           $("#blog-wrap").append(generatePost(url, title, date, body, slug, cats));
-          $("#blog-wrap").append(generateDisqussion(slug));
         };
       }, delay);
     };
   };
 
+  // Toggle control variable
+  var disqusActive = false;
+
+  // Open comment box
+  $("#blog-wrap").on("click", "button.comment", function() {
+    var slug = $(this).attr('slug');
+    reset("id-" + slug, window.location.href + "/#" + slug, slug, 'en');
+    $("#disqus_thread").slideDown("fast", function() {
+      disqusActive = true;
+    });
+  });
+
+  // Close comment box
+  $("html").click(function(e) {
+    if (!$(e.target).is('#disqus_thread') && disqusActive) {
+    	$("#disqus_thread").slideUp("fast", function() {
+        disqusActive = false;
+      });
+    }
+  });
+
+
+  /*
+   *  Loads a fresh batch of 10 posts and appends them after the current pages
+   */
+   $("body").on("click", "button.load-more", function() {
+     // Increment page counter
+     currPage++;
+
+     $("button.load-more").html("Loading...");
+     setTimeout(function() {
+       $("button.load-more").html("MORE");
+     }, 3000);
+
+     // Check if there's an active button
+     var activeFilter = $("button.active").attr('id');
+
+     // Get another set of posts from this category, if a filter is active
+     $.getJSON("http://sonicpitch.com/wp-json/wp/v2/posts?page=" + currPage, function(body) {
+       renderPosts(body);
+     });
+
+     $("button.active").removeClass('active');
+
+   });
 
 });

@@ -447,6 +447,8 @@ html {
   width: 100%; }
   .post-wrap h1, .post-wrap h2, .post-wrap h3, .post-wrap h4, .post-wrap h5, .post-wrap h6, .post-wrap p {
     color: #0c011f; }
+  .post-wrap em {
+    font-size: 2.2rem; }
   .post-wrap .title-wrap {
     width: 65%;
     margin-left: 17.5%; }
@@ -454,6 +456,10 @@ html {
       width: 100%;
       height: auto; }
     .post-wrap .title-wrap .date {
+      text-align: center;
+      color: #3f3c45;
+      padding-top: 17.5px; }
+    .post-wrap .title-wrap .cats {
       text-align: center;
       color: #3f3c45;
       padding-top: 17.5px; }
@@ -529,6 +535,31 @@ html {
   right: 0;
   padding: 15px 100px 15px 100px;
   background-color: #0c011f !important; }
+
+.load-more-wrap {
+  text-align: center;
+  padding: 10px 0px 40px 0px; }
+  .load-more-wrap button {
+    display: inline-block;
+    margin: 0px 20px 0px 20px;
+    padding: 0px 15px 0px 15px;
+    width: auto;
+    height: 60px;
+    border: none;
+    border: 3px solid #0c011f;
+    font-size: 1.4rem;
+    transition: 200ms;
+    -webkit-transition: 200ms;
+    background-color: transparent;
+    color: #0c011f; }
+    .load-more-wrap button:hover {
+      transition: 200ms;
+      -webkit-transition: 200ms;
+      background-color: #0c011f;
+      color: #ffffff; }
+    @media screen and (max-width: 768px) {
+      .load-more-wrap button {
+        margin: 2.5px 5px 2.5px 5px; } }
 
 .places-wrap .title-wrap h2, .places-wrap .title-wrap p {
   color: #0c011f;

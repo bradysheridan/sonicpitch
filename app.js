@@ -54,7 +54,7 @@ app.get('/contact', function(req, res) {
 });
 
 // Fetch blog data from Wordpress
-var postURL = "http://sonicpitch.com/wp-json/wp/v2/posts";
+var postURL = "http://sonicpitch.com/wp-json/wp/v2/posts?page=1";
 var postData;
 
 // Gets JSON data and passes to a callback function to save in local variable

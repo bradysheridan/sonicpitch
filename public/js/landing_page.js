@@ -26,7 +26,7 @@ $(function() {
             "background-size": "cover !important"
           });
           $("#bg" + i + " .title").html(title);
-          var path = window.location.href + "blog/#" + slug;
+          var path = "#" + slug;
           $("#bg" + i + " a").attr('href', path);
         };
       }, delay);
@@ -34,5 +34,11 @@ $(function() {
   });
 
   // Handle links
+  $("a.delay").click(function(e) {
+    e.preventDefault();
+    var slug = $(this).attr('href');
+    window.destination = slug;
+    window.location.href = "/journal";
+  });
 
 });
