@@ -12,6 +12,20 @@ html { height: 100%;}
 .nav .open > a:hover,
 .nav .open > a:focus {background-color: transparent;}
 
+#logo {
+  display: block;
+  position: fixed;
+  top: 35px;
+  left: 80px;
+  height: 25px;
+  @media screen and ( max-width: 768px ) {
+    display: block;
+    position: fixed;
+    top: 35px;
+    left: 80px;
+    height: 20px;
+  }
+}
 /*-------------------------------*/
 /*           Wrappers            */
 /*-------------------------------*/
@@ -65,7 +79,9 @@ html { height: 100%;}
 
 #page-content-wrapper {
     width: 100%;
+    height: 100%;
     height: 100vh;
+    z-index: 999999;
     overflow-y: scroll; /* has to be scroll, not auto */
     -webkit-overflow-scrolling: touch;
 }
@@ -212,18 +228,13 @@ html { height: 100%;}
 .hamburger {
   position: fixed;
   top: 30px;
-  z-index: 999;
+  z-index: 9999;
   display: block;
   width: 32px;
   height: 32px;
   margin-left: 25px;
   background: transparent;
   border: none;
-
-  h5 {
-    display: inline;
-    margin-left: 45px;
-  }
 
   img {
     height: 22.5px;

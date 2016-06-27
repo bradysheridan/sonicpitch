@@ -91,6 +91,7 @@ $off-black: #0c011f;
 .post-wrap {
   // Sizing
   width: 100%;
+  overflow-x: hidden;
 
   h1,h2,h3,h4,h5,h6,p {
     color: $off-black;
@@ -219,6 +220,11 @@ $off-black: #0c011f;
   right: 0;
   padding: 15px 100px 15px 100px;
   background-color: $off-black !important;
+  z-index: 100000;
+
+  @media screen and ( max-width: 768px ) {
+    padding: 0px;
+  }
 }
 
 
