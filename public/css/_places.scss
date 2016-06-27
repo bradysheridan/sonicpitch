@@ -52,18 +52,11 @@
     }
 
     &.active {
-      background-color: $off-white;
-      color: $off-black;
+      background-color: $off-black;
+      color: $off-white;
     }
-  }
 
-  @media screen and ( max-width: 768px ) {
-    margin-top: 85px;
-    background-color: $off-black;
-    display: flex;
-    flex-direction: row;
-
-    button {
+    @media screen and ( max-width:768px ) {
       flex: 1;
       margin: 0px;
       height: 100%;
@@ -83,6 +76,13 @@
         color: $off-black;
       }
     }
+  }
+
+  @media screen and ( max-width: 768px ) {
+    margin-top: 85px;
+    background-color: $off-black;
+    display: flex;
+    flex-direction: row;
   }
 }
 

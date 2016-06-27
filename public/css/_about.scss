@@ -2,9 +2,6 @@
   width: 100% !important;
   height: 100% !important;
 
-  overflow-y: scroll;
-  padding: 85px 0px 85px 0px;
-
   background: url(http://sonicpitch.com/wp-content/uploads/2014/05/westcoast-pamela-2.jpg);
   background-origin: center;
   background-repeat: no-repeat;
@@ -15,6 +12,9 @@
     width: 50%;
     height: 100%;
     margin: 0 auto;
+
+    overflow-y: scroll;
+    padding: 85px 0px 85px 0px;
 
     h3 {
       font-size: 3.2rem;

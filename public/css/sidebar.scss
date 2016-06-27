@@ -76,7 +76,14 @@ html { height: 100%;}
     @media screen and ( max-width: 768px ) {
       margin-right: -1 * $left-small;
     }
-    img { display: none }
+}
+
+#wrapper {
+  &.toggled {
+    #page-content-wrapper {
+      img { display: none }
+    }
+  }
 }
 
 /*-------------------------------*/
