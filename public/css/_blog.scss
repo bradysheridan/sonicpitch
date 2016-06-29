@@ -15,6 +15,19 @@ $off-black: #0c011f;
   }
 }
 
+@mixin buttonColorsInverse() {
+  transition: 200ms;
+  -webkit-transition: 200ms;
+  background-color: transparent;
+  color: $off-white;
+
+  &:hover {
+    transition: 200ms;
+    -webkit-transition: 200ms;
+    background-color: $off-white;
+    color: $off-black;
+  }
+}
 
 // Loading screen
 .loading {
@@ -44,6 +57,8 @@ $off-black: #0c011f;
     color: $off-black;
     text-align: center;
   }
+  h2 { font-weight: 700; }
+
   &:after {
     content: "";
     position: relative;
@@ -52,10 +67,9 @@ $off-black: #0c011f;
     height: 1px;
     background-color: $off-black;
   }
-  margin-top: 60px;
+  margin-top: 95px;
 
   @media screen and ( max-width: 768px ) {
-    margin-top: 85px;
     h2 { font-size: 4rem }
     p { font-size: 1.2rem }
   }
@@ -63,11 +77,18 @@ $off-black: #0c011f;
 
 // Blog category filter
 .filter-wrap {
-  text-align: center;
-  padding: 10px 0px 40px 0px;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 85px;
+  padding: 10px 40px 40px 0px;
+  background-color: $off-white;
+  z-index: 999999;
 
-  button {
+  button.filter {
     display: inline-block;
+    float: right;
     margin: 0px 20px 0px 20px;
     padding: 0px 15px 0px 15px;
     width: auto;
@@ -77,14 +98,37 @@ $off-black: #0c011f;
     font-size: 1.4rem;
     @include buttonColors();
 
-    @media screen and ( max-width: 768px ) {
-      margin: 2.5px 5px 2.5px 5px;
-    }
-
+    // Active styles for large screens
     &.active {
       background-color: $off-black;
       color: $off-white;
     }
+
+    @media screen and ( max-width: 832px ) {
+      flex: 1;
+      margin: 0px;
+      height: 100%;
+      background-color: $off-black;
+      color: $off-white;
+      border: none;
+      border-top: 4px solid $off-black;
+
+      @include buttonColorsInverse();
+
+      // Active styles for small screens
+      &.active {
+        background-color: $off-white;
+        color: $off-black;
+      }
+    }
+  }
+
+  @media screen and ( max-width: 832px ) {
+    margin-top: 85px;
+    padding: 0px;
+    background-color: $off-black;
+    display: flex;
+    flex-direction: row;
   }
 }
 
@@ -95,6 +139,10 @@ $off-black: #0c011f;
 
   h1,h2,h3,h4,h5,h6,p {
     color: $off-black;
+  }
+
+  h4 {
+    font-size: 3rem;
   }
 
   em {
@@ -115,13 +163,13 @@ $off-black: #0c011f;
 
     .date {
       text-align: center;
-      color: #3f3c45;
+      color: #201e22;
       padding-top: 17.5px;
     }
     .cats {
       text-align: center;
-      color: #3f3c45;
-      padding-top: 17.5px;
+      color: #201e22;
+      padding-top: 5px;
     }
     .title {
       text-align: center;
@@ -150,15 +198,21 @@ $off-black: #0c011f;
     padding-top: 30px;
 
     p {
+      font-family: $font-body;
       img {
         text-align: center;
       }
       a img {
         text-align: center;
-        margin: 0 auto;
+      }
+      strong a {
+        text-align: center;
       }
     }
-    img { text-align: center; }
+
+    // img.aligncenter {
+    //   margin: 0 auto;
+    // }
 
     // Mobile
     @media screen and ( max-width: 768px ) {
@@ -223,7 +277,7 @@ $off-black: #0c011f;
   z-index: 100000;
 
   @media screen and ( max-width: 768px ) {
-    padding: 0px;
+    padding: 15px 30px 15px 30px;
   }
 }
 
@@ -246,5 +300,22 @@ $off-black: #0c011f;
     @media screen and ( max-width: 768px ) {
       margin: 2.5px 5px 2.5px 5px;
     }
+  }
+}
+
+
+@media screen and ( max-width: 832px ) {
+  .top-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 85px;
+    z-index: 99;
+
+    background: -moz-linear-gradient(top, rgba(74,74,74,0.65) 0%, rgba(74,74,74,0.64) 1%, rgba(74,74,74,0.63) 2%, rgba(74,74,74,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(74,74,74,0.65) 0%,rgba(74,74,74,0.64) 1%,rgba(74,74,74,0.63) 2%,rgba(74,74,74,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(74,74,74,0.65) 0%,rgba(74,74,74,0.64) 1%,rgba(74,74,74,0.63) 2%,rgba(74,74,74,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a64a4a4a', endColorstr='#004a4a4a',GradientType=0 );
   }
 }

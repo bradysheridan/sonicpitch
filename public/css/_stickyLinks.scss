@@ -12,7 +12,7 @@ $off-white: #ffffff;
     width: 15px;
   }
 
-  @media screen and ( max-width: 768px ) {
+  @media screen and ( max-width: 1142px ) {
     right: 0px;
     left: 0px;
     bottom: 17.5px;
@@ -32,7 +32,7 @@ $off-white: #ffffff;
     color: $off-white;
   }
 
-  @media screen and ( max-width: 768px ) {
+  @media screen and ( max-width: 1142px ) {
     display: none;
   }
 }

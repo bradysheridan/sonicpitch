@@ -2,25 +2,49 @@
   <div class="overlay"></div>
 
   <!-- Sidebar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+  <% if (darkTheme) { %>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+  <% } else { %>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" style="background-color:#0c011f;" role="navigation">
+  <% } %>
     <ul class="nav sidebar-nav">
       <li class="sidebar-brand">
-        <a href="/"><img src="../images/logo.png" style="width:65%;" /></a>
+        <!-- <a href="/"><img src="../images/logo.png" style="width:65%;" /></a> -->
       </li>
       <li>
-      <a href="/now">WHAT I'M DOING NOW</a>
+        <% if (darkTheme) { %>
+          <a href="/now">WHAT I'M DOING NOW</a>
+        <% } else { %>
+          <a style="color:#fff !important;" href="/now">WHAT I'M DOING NOW</a>
+        <% } %>
       </li>
       <li>
-        <a href="/journal">JOURNAL</a>
+        <% if (darkTheme) { %>
+          <a href="/journal">JOURNAL</a>
+        <% } else { %>
+          <a style="color:#fff !important;" href="/journal">JOURNAL</a>
+        <% } %>
       </li>
       <li>
-        <a href="/places">FAVORITE PLACES</a>
+        <% if (darkTheme) { %>
+          <a href="/places">FAVORITE PLACES</a>
+        <% } else { %>
+          <a style="color:#fff !important;" href="/places">FAVORITE PLACES</a>
+        <% } %>
       </li>
       <li>
-        <a href="/about">ABOUT</a>
+        <% if (darkTheme) { %>
+          <a href="/about">ABOUT</a>
+        <% } else { %>
+          <a style="color:#fff !important;" href="/about">ABOUT</a>
+        <% } %>
       </li>
       <li>
-        <a href="/contact">CONTACT</a>
+        <% if (darkTheme) { %>
+          <a href="/contact">CONTACT</a>
+        <% } else { %>
+          <a style="color:#fff !important;" href="/contact">CONTACT</a>
+        <% } %>
       </li>
       <!-- <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
@@ -34,29 +58,18 @@
         </ul>
       </li> -->
     </ul>
+    <div class="bottom-left-wrap">
+      <% if (darkTheme) { %>
+        <p style="color:#0c011f"><a href="/journal">Journal</a>  /  <a href="/about">About</a>  /  <a href="/contact">Contact</a></p>
+      <% } else { %>
+        <p><a href="/journal">Journal</a>  /  <a href="/about">About</a>  /  <a href="/contact">Contact</a></p>
+      <% } %>
+    </div>
   </nav>
   <!-- /#sidebar-wrapper -->
 
   <!-- Page wrapper -->
   <div id="page-content-wrapper">
-
-    <!-- Determine icon coloration -->
-    <% if (darkTheme) { %>
-      <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-        <span style="background-color: #0c011f !important;" class="hamb-top"></span>
-        <span style="background-color: #0c011f !important;" class="hamb-middle"></span>
-        <span style="background-color: #0c011f !important;" class="hamb-bottom"></span>
-        <img src="../images/logo.png" />
-      </button>
-    <% } else { %>
-      <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-        <span class="hamb-top"></span>
-        <span class="hamb-middle"></span>
-        <span class="hamb-bottom"></span>
-        <img src="../images/logo-white.png" />
-      </button>
-    <% } %>
-
     <!-- Determine main page contents -->
     <% if (showLandingPage) { %>
       <% include content/landing_page_content %>
@@ -75,3 +88,22 @@
   <!-- /#page-content-wrapper -->
 </div>
 <!-- /#wrapper -->
+
+<div class="fixed-top-left">
+  <!-- Determine icon coloration -->
+  <% if (darkTheme) { %>
+    <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+      <span style="background-color: #0c011f !important;" class="hamb-top"></span>
+      <span style="background-color: #0c011f !important;" class="hamb-middle"></span>
+      <span style="background-color: #0c011f !important;" class="hamb-bottom"></span>
+    </button>
+    <a href="/"><img src="../images/logo.png" /></a>
+  <% } else { %>
+    <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+      <span class="hamb-top"></span>
+      <span class="hamb-middle"></span>
+      <span class="hamb-bottom"></span>
+    </button>
+    <a href="/"><img src="../images/logo-white.png" /></a>
+  <% } %>
+</div>
