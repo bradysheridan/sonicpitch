@@ -14,8 +14,6 @@ var server = http.createServer(app).listen(port, function () {
     APPNAME, process.pid, address.address, address.port);
 });
 
-var io = require('socket.io')(server);
-
 // Look in '/public' when serving files
 app.use(express.static('public'));
 app.set('views', path.join(__dirname, 'public/views'));
@@ -51,71 +49,6 @@ app.get('/about', function(req, res) {
 // CONTACT
 app.get('/contact', function(req, res) {
   res.render('pages/contact');
-});
-
-// Fetch blog data from Wordpress
-var postURL = "http://sonicpitch.com/wp-json/wp/v2/posts?page=1";
-var postData;
-
-// Gets JSON data and passes to a callback function to save in local variable
-function getBlogData(url, callback) {
-  request({
-    url: url,
-    json: true
-  }, function (error, response, body) {
-    if (!error && response.statusCode === 200) {
-      callback(body);
-    }
-  });
-}
-
-// Do the work, store JSON locally in blogData
-getBlogData(postURL, function (body) {
-  postData = body;
-});
-
-// Fetch categories data from Wordpress
-var catURL = "http://sonicpitch.com/wp-json/wp/v2/categories";
-var catData;
-
-function getCatData(url, callback) {
-  request({
-    url: url,
-    json: true
-  }, function (error, response, body) {
-    if (!error && response.statusCode === 200) {
-      callback(body);
-    }
-  });
-};
-
-getCatData(catURL, function(body) {
-  catData = body;
-});
-
-
-// Socket.io fetches and delivers the Wordpress JSON for blog data
-io.on("connection", function(socket) {
-  console.log("a connection was ")
-  // A client connected
-  console.log("");
-  console.log("Socket.io");
-  console.log("=-=-=-=-=");
-  console.log("A connection was made.");
-  console.log("");
-
-  // Send posts to the client
-  socket.emit("posts", postData);
-  socket.emit("cats", catData);
-
-  // A client disconnected
-  socket.on("disconnect", function() {
-    console.log("");
-    console.log("Socket.io");
-    console.log("=-=-=-=-=");
-    console.log("The user disconnected.");
-    console.log("");
-  });
 });
 
 module.exports = app;
